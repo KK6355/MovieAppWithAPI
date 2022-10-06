@@ -30,7 +30,7 @@ namespace MovieAppWithAPI.Pages.Movies
                 return NotFound();
             }
 
-            var movie =  await _context.Movie.FirstOrDefaultAsync(m => m.Id == id);
+            var movie =  await _context.Movie.FirstOrDefaultAsync(m => m.MovieId == id);
             if (movie == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace MovieAppWithAPI.Pages.Movies
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MovieExists(Movie.Id))
+                if (!MovieExists(Movie.MovieId))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace MovieAppWithAPI.Pages.Movies
 
         private bool MovieExists(Guid id)
         {
-          return _context.Movie.Any(e => e.Id == id);
+          return _context.Movie.Any(e => e.MovieId == id);
         }
     }
 }

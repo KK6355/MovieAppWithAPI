@@ -20,7 +20,7 @@
                 @Html.DisplayNameFor(model => model.Movie[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Genres)
+                @Html.DisplayNameFor(model => model.Movie[0].Genre)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Movie[0].Description)
@@ -47,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Genres)
+                @Html.DisplayFor(modelItem => item.Genre)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -62,9 +62,9 @@
                 @Html.DisplayFor(modelItem => item.ReleaseYear)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.MovieId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.MovieId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.MovieId">Delete</a>
             </td>
         </tr>
 }

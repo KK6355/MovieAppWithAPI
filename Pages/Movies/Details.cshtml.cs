@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MovieAppWithAPI.Data;
 using MovieAppWithAPI.Models;
+using MovieAppWithAPI.Services;
 
 namespace MovieAppWithAPI.Pages.Movies
 {
     public class DetailsModel : PageModel
     {
-        private readonly MovieAppWithAPI.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly IAPI _api;
 
-        public DetailsModel(MovieAppWithAPI.Data.ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context, IAPI api)
         {
             _context = context;
+            _api = api;
         }
 
       public Movie Movie { get; set; }
@@ -28,16 +31,19 @@ namespace MovieAppWithAPI.Pages.Movies
                 return NotFound();
             }
 
-            var movie = await _context.Movie.FirstOrDefaultAsync(m => m.Id == id);
+            var movie = await _context.Movie.FirstOrDefaultAsync(m => m.MovieId == id);
+            Movie movieAPI = await _api.GetMovies(movie.IMDBId, "9adad78f3fmsh65443a93600444dp17223ejsn9ecd90763758");
             if (movie == null)
             {
                 return NotFound();
             }
-            else 
+            else
             {
-                Movie = movie;
+                Movie = movieAPI;
             }
             return Page();
+            
+           
         }
     }
 }

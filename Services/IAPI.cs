@@ -4,6 +4,6 @@ namespace MovieAppWithAPI.Services
 {
     public interface IAPI
     {
-        Task<Movie> GetMovies();
+        Task<Movie> GetMovies(string IMDBId, string APIKey);
     }
 }

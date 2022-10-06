@@ -29,7 +29,7 @@ namespace MovieAppWithAPI.Pages.Movies
                 return NotFound();
             }
 
-            var movie = await _context.Movie.FirstOrDefaultAsync(m => m.Id == id);
+            var movie = await _context.Movie.FirstOrDefaultAsync(m => m.MovieId == id);
 
             if (movie == null)
             {

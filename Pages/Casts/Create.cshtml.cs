@@ -21,7 +21,7 @@ namespace MovieAppWithAPI.Pages.Casts
 
         public IActionResult OnGet()
         {
-        ViewData["MovieId"] = new SelectList(_context.Movie, "Id", "Id");
+        ViewData["MovieId"] = new SelectList(_context.Movie, "MovieId", "MovieId");
             return Page();
         }
 
