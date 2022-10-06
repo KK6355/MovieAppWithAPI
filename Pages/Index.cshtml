@@ -5,6 +5,27 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Top Rated Movies From IMDb</h1>
+</div>
+<div class="row">
+
+    @foreach (var Movie in Model.MovieList)
+    {
+        <div class="col-md-3">
+            <div class="card" style=" margin-top: 20px">
+                <div class="card-header">
+                    <img src="@Movie.Image" class="card-img-top" width="200" /> 
+                </div>
+                <div class="card-body">
+                    <h3>@Movie.Title</h3>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <p class="card-text">@Movie.Description</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
 </div>
