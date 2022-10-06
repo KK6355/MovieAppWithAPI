@@ -9,8 +9,8 @@ namespace MovieAppWithAPI.Services
         HttpClient client = new HttpClient();
         public async Task<Movie> GetMovies(string IMDBId, string APIKey)
         {
-            string reponse = await client.GetStringAsync($"https://movie-details1.p.rapidapi.com/imdb_api/movie?id={IMDBId}&rapidapi-key={APIKey}");
-            Movie movieObject = JsonConvert.DeserializeObject<Movie>(reponse);
+            string response = await client.GetStringAsync($"https://movie-details1.p.rapidapi.com/imdb_api/movie?id={IMDBId}&rapidapi-key={APIKey}");
+            Movie movieObject = JsonConvert.DeserializeObject<Movie>(response);
             return movieObject;
         }
 

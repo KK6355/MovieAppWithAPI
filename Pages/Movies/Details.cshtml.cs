@@ -33,13 +33,26 @@ namespace MovieAppWithAPI.Pages.Movies
 
             var movie = await _context.Movie.FirstOrDefaultAsync(m => m.MovieId == id);
             Movie movieAPI = await _api.GetMovies(movie.IMDBId, "9adad78f3fmsh65443a93600444dp17223ejsn9ecd90763758");
+            if (movieAPI != null)
+            {
+                movie.Image = movieAPI.Image;
+                movie.Description = movieAPI.Description;
+
+            }
+            else
+            {
+                movie.Image = "Invail API";
+                movie.Description = "Invail API";
+            }
+            
             if (movie == null)
             {
                 return NotFound();
             }
             else
             {
-                Movie = movieAPI;
+                Movie = movie;
+                //Movie.Image = movieAPI.Image;
             }
             return Page();
             

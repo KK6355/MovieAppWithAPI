@@ -8,15 +8,17 @@ using Microsoft.EntityFrameworkCore;
 using MovieAppWithAPI.Data;
 using MovieAppWithAPI.Models;
 
+
 namespace MovieAppWithAPI.Pages.Movies
 {
     public class IndexModel : PageModel
     {
         private readonly MovieAppWithAPI.Data.ApplicationDbContext _context;
-
+        
         public IndexModel(MovieAppWithAPI.Data.ApplicationDbContext context)
         {
             _context = context;
+          
         }
 
         public IList<Movie> Movie { get;set; } = default!;
