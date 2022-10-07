@@ -6,14 +6,14 @@
 <br>
 <br>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <p class="display-4" style="font-size:30px;font-weight:bold;">Top Rated Movies From IMDb</p>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6 justify-content-md-end">
         <form method="post">
             <div class="form-group">
-                <input asp-for="@Model.IMDBId" type="text" />
-                <button class="col-md-6 btn-primary" type="submit" asp-action="Index" style="font-size:15px;">Display your Moive With IMDb Id</button>
+                <input asp-for="@Model.IMDBId" type="text" /> &nbsp;&nbsp;
+                <button class="col-md-5 btn-primary" type="submit" asp-action="Index" style="font-size:18px;">Display your Moive With IMDb Id</button>
             </div>
         </form>
     </div>
