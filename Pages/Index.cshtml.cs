@@ -5,6 +5,8 @@ using MovieAppWithAPI.Services;
 using MovieAppWithAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using MovieAppWithAPI.Operations;
+using System.Collections.Generic;
+
 namespace MovieAppWithAPI.Pages
 {
     [BindProperties]
@@ -23,7 +25,7 @@ namespace MovieAppWithAPI.Pages
             IMDBIdList = new List<string>
             {
                 "tt0137523",
-                "tt0118799",
+                //"tt0118799",
                 //"tt0245429",
                 //"tt0816692"
             };
@@ -33,14 +35,14 @@ namespace MovieAppWithAPI.Pages
 
         public async Task<IActionResult> OnGetAsync()
         {
-            
+
             foreach (var IMDBId in IMDBIdList)
             {
                 Movie movie = new Movie();
                 Movie movieAPI = await _api.GetMovies(IMDBId, "9adad78f3fmsh65443a93600444dp17223ejsn9ecd90763758");
                 if (movieAPI != null)
                 {
-
+                    movie.IMDBId = IMDBId;
                     movie.Title = movieAPI.Title;
                     movie.Image = movieAPI.Image;
                     movie.Description = movieAPI.Description;
@@ -55,11 +57,11 @@ namespace MovieAppWithAPI.Pages
                 MovieList.Add(movie);
 
             }
-           MovieList = MovieList.OrderBy(x => x.Title).ToList();
-        
+            MovieList = MovieList.OrderBy(x => x.Title).ToList();
+
+
+
             return Page();
-
-
         }
         public async Task<IActionResult> OnPostAsync()
         {
@@ -69,14 +71,14 @@ namespace MovieAppWithAPI.Pages
                 StaticList.RenderedMovies.Add(IMDBId);
             }
             IMDBIdList.AddRange(StaticList.RenderedMovies);
-            
+
             foreach (var IMDBId in IMDBIdList)
             {
                 Movie movie = new Movie();
                 Movie movieAPI = await _api.GetMovies(IMDBId, "9adad78f3fmsh65443a93600444dp17223ejsn9ecd90763758");
                 if (movieAPI != null)
                 {
-
+                    movie.IMDBId = IMDBId;
                     movie.Title = movieAPI.Title;
                     movie.Image = movieAPI.Image;
                     movie.Description = movieAPI.Description;
