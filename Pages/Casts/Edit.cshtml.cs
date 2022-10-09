@@ -36,7 +36,7 @@ namespace MovieAppWithAPI.Pages.Casts
                 return NotFound();
             }
             Cast = cast;
-           ViewData["MovieId"] = new SelectList(_context.Movie, "MovieId", "MovieId");
+           ViewData["MovieId"] = new SelectList(_context.Movie, "MovieId", "Title");
             return Page();
         }
 
