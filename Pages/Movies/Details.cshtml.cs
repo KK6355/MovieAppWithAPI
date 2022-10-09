@@ -22,7 +22,9 @@ namespace MovieAppWithAPI.Pages.Movies
             _api = api;
         }
 
-      public Movie Movie { get; set; }
+        public Movie Movie { get; set; }
+        public Cast Cast { get; set; }
+        public List<Cast> CastList = new List<Cast>();
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
@@ -32,6 +34,7 @@ namespace MovieAppWithAPI.Pages.Movies
             }
 
             var movie = await _context.Movie.FirstOrDefaultAsync(m => m.MovieId == id);
+            var cast =await  _context.Cast.Where(m => m.MovieId == id).ToListAsync();
             Movie movieAPI = await _api.GetMovies(movie.IMDBId, "9adad78f3fmsh65443a93600444dp17223ejsn9ecd90763758");
             if (movieAPI != null)
             {
@@ -52,8 +55,10 @@ namespace MovieAppWithAPI.Pages.Movies
             else
             {
                 Movie = movie;
-                //Movie.Image = movieAPI.Image;
+                CastList = cast;
+               
             }
+          
             return Page();
             
            

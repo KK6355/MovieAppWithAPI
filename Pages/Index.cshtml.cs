@@ -25,9 +25,9 @@ namespace MovieAppWithAPI.Pages
             IMDBIdList = new List<string>
             {
                 "tt0137523",
-                "tt0118799",
-                "tt0245429",
-                "tt0816692"
+                //"tt0118799",
+                //"tt0245429",
+                //"tt0816692"
             };
         }
 
