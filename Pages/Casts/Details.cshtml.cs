@@ -20,6 +20,7 @@ namespace MovieAppWithAPI.Pages.Casts
         }
 
       public Cast Cast { get; set; }
+        public Movie Movie { get; set; }
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
@@ -29,6 +30,7 @@ namespace MovieAppWithAPI.Pages.Casts
             }
 
             var cast = await _context.Cast.FirstOrDefaultAsync(m => m.Id == id);
+            var movie = await _context.Movie.FirstOrDefaultAsync(m => m.MovieId == cast.MovieId);
             if (cast == null)
             {
                 return NotFound();
@@ -36,6 +38,7 @@ namespace MovieAppWithAPI.Pages.Casts
             else 
             {
                 Cast = cast;
+                Movie = movie;
             }
             return Page();
         }

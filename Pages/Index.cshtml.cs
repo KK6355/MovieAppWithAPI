@@ -24,10 +24,14 @@ namespace MovieAppWithAPI.Pages
             MovieList = new List<Movie>();
             IMDBIdList = new List<string>
             {
-                "tt0137523",
-                //"tt0118799",
-                //"tt0245429",
-                //"tt0816692"
+                "tt0118799",
+                "tt0245429",
+                "tt0816692",
+                "tt0108052",
+                "tt0468569",
+                "tt0088763",
+                "tt1675434",
+                "tt0253474"
             };
         }
 
@@ -46,7 +50,6 @@ namespace MovieAppWithAPI.Pages
                     movie.Title = movieAPI.Title;
                     movie.Image = movieAPI.Image;
                     movie.Description = movieAPI.Description;
-
                 }
                 else
                 {
