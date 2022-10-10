@@ -17,7 +17,9 @@ namespace MovieAppWithAPI.Pages
         public List<Movie> MovieList { get; set; }
         public string IMDBId { get; set; } = "";
         public List<string> IMDBIdList { get; set; }
-      
+        public string APIKey = "ffb91c9a05msh403a79b4cc01e2bp100ccbjsn2c5307371e61";
+
+
         public IndexModel(IAPI api)
         {
             _api = api;
@@ -43,7 +45,7 @@ namespace MovieAppWithAPI.Pages
             foreach (var IMDBId in IMDBIdList)
             {
                 Movie movie = new Movie();
-                Movie movieAPI = await _api.GetMovies(IMDBId, "9adad78f3fmsh65443a93600444dp17223ejsn9ecd90763758");
+                Movie movieAPI = await _api.GetMovies(IMDBId, APIKey);
                 if (movieAPI != null)
                 {
                     movie.IMDBId = IMDBId;
@@ -78,7 +80,7 @@ namespace MovieAppWithAPI.Pages
             foreach (var IMDBId in IMDBIdList)
             {
                 Movie movie = new Movie();
-                Movie movieAPI = await _api.GetMovies(IMDBId, "9adad78f3fmsh65443a93600444dp17223ejsn9ecd90763758");
+                Movie movieAPI = await _api.GetMovies(IMDBId, APIKey);
                 if (movieAPI != null)
                 {
                     movie.IMDBId = IMDBId;
