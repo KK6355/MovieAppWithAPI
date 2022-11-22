@@ -17,7 +17,7 @@ namespace MovieAppWithAPI.Pages
         public List<Movie> MovieList { get; set; }
         public string IMDBId { get; set; } = "";
         public List<string> IMDBIdList { get; set; }
-        public string APIKey = "ffb91c9a05msh403a79b4cc01e2bp100ccbjsn2c5307371e61";
+        public string APIKey = "YOUROWNKEY";
 
 
         public IndexModel(IAPI api)
